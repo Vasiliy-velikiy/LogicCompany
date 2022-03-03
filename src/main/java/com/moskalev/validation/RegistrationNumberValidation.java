@@ -9,7 +9,7 @@ import javax.validation.ConstraintValidatorContext;
 /**
  * @author Vasiliy Moskalev
  * @version 1.1
- * @since 21.02.22
+ * @since 03.03.22
  * Validator for  registrationNumber
  */
 public class RegistrationNumberValidation implements ConstraintValidator <RegistrationNumberAnnotation,String>{

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author Vasiliy Moskalev
  * @version 1.1
- * @since 09.02.22
+ * @since 03.03.22
  * Class configuration for Swagger
  */
 @Configuration

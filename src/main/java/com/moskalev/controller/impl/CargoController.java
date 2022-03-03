@@ -4,3 +4,4 @@ import com.moskalev.controller.CrudController;
 
 public class CargoController implements CrudController<> {
 }
+
