@@ -17,10 +17,22 @@ insert city(coordinatex, coordinatey, name, map_of_country_id)
     (8, 18, 'Moscow', 2),
     (0.5, 8, 'Berlin', 3);
 
-insert truck(change_time_of_driver, registration_number, truck_capacity, work_status, driver_id, order_id)
-VALUE (),
-    (),
+insert orders(is_completed, unique_number)
+    VALUE(true,'34-asdf'),
+    (false,'e4efdsv'),
+    (true,'342rfsd'),
+    (false,'3dewrf'),
+    (false,'werfv43');
 
+insert  driver(first_name, last_name, hours_worked_per_month, personal_number, status_of_driver, city_id, order_id)
+    VALUE('Moskalev','Vasiliy',0,'0001','REST',1,2),
+    ('Zelenev','Nikolay',130,'00234','SHIFT',3,4),
+    ('Maslov','Kirill',90.5,'0032','DRIVING',6,5);
+
+insert into truck (change_time_of_driver, registration_number, truck_capacity, work_status, driver_id, order_id)
+values (8,'sd345e',10,true,1,2),
+       (12,'ww111w',0.6,true,2,4),
+       (9,'tr326d',12,false,3,5);
 
 
 

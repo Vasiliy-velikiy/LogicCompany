@@ -20,12 +20,12 @@ import static javax.persistence.FetchType.LAZY;
  */
 @Getter
 @Setter
-@Table(name = "order")
+@Table(name = "orders")
 @Entity
 public class Order {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id",updatable = false, nullable = false, unique=true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

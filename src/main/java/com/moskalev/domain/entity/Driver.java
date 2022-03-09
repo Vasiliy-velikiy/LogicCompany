@@ -37,6 +37,7 @@ public class Driver {
     @Column
     private String personalNumber;
 
+    //	Отработано часов в этом месяце
     @Column
     private Double hoursWorkedPerMonth;
 
@@ -53,7 +54,7 @@ public class Driver {
     @OneToOne(fetch = LAZY, mappedBy = "driver", optional = false)
     private Truck currentTruck;
 
-//	водитель не выполняет сейчас другие заказы;
+//	водитель не выполняет сейчас другие заказы-требование в условии;
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,
                     CascadeType.REFRESH})

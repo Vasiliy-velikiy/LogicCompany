@@ -31,6 +31,7 @@ public class Truck {
     @Column
     private Double changeTimeOfDriver;
 
+    //вместимость в тоннах
     @Column
     private Double truckCapacity;
 
