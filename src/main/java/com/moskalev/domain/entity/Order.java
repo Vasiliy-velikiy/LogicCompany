@@ -5,7 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+
+import static javax.persistence.CascadeType.*;
+import static javax.persistence.CascadeType.REFRESH;
+import static javax.persistence.FetchType.LAZY;
 
 /**
  * @author Vasiliy  Moskalev
@@ -18,34 +23,39 @@ import java.util.List;
 @Table(name = "order")
 @Entity
 public class Order {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @Column
-    Integer uniqueNumber;
+    @Column(name = "unique_number")
+    private String uniqueNumber;
+
     /**
      * Completed (yes/no)
      */
     @Column
-    Boolean isCompleted;
+    private Boolean isCompleted;
 
     /**
      * Truck assigned to fulfill the order
      */
-    Truck currentTruck;
+    //фура назначеная выполнять заказ-требование в условии
+    @OneToOne(fetch = LAZY, mappedBy = "order", optional = false)
+    private Truck currentTruck;
 
     /**
      * list Of way Points :City ,Cargo, Type loading/unloading
      */
-    @ElementCollection
-    @CollectionTable(name = "someObjects",
-            joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "some_id")
-    List <WayPoint> wayPoints;
+    //заказ может пройти через список маршрутных точек, а у маршрутной точки только 1 заказ
+    //private List <WayPoint> wayPoints;
 
     /**List of drivers who fulfill the order*/
-    List <Driver> drivers;
+
+    @OneToMany(mappedBy = "orderForDriver",
+            cascade = {PERSIST, MERGE})
+    //	Список водителей, которые выполняют заказ-требование в условии
+    private List <Driver> drivers;
 
 }

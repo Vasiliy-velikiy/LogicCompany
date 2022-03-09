@@ -4,7 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+
+import static javax.persistence.CascadeType.*;
 
 /**
  * @author Vasiliy  Moskalev
@@ -14,15 +17,21 @@ import java.util.List;
  */
 @Getter
 @Setter
-@Table(name = "driver")
+@Table(name = "map")
 @Entity
 public class MapOfCountry {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    List<City> cities;
+    @Column
+    private String mapName;
 
-    List<Double> distances;
+    @OneToMany(mappedBy = "mapOfCountry",
+            orphanRemoval = true,
+            cascade = {PERSIST, MERGE, DETACH, REFRESH})
+    private List <City> cities;
+
+  //private List<Double> distances;
 }

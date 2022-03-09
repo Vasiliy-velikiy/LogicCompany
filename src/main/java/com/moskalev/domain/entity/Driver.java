@@ -6,9 +6,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.EnumType.STRING;
+import static javax.persistence.FetchType.LAZY;
 
 /**
  * @author Vasiliy  Moskalev
@@ -24,33 +26,37 @@ public class Driver {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column
-    String firstName;
+    private String firstName;
 
     @Column
-    String lastName;
+    private String lastName;
 
     @Column
-    String personalNumber;
+    private String personalNumber;
 
     @Column
-    Double hoursWorkedPerMonth;
+    private Double hoursWorkedPerMonth;
 
     @Column
     @Enumerated(STRING)
-    StatusOfDriver statusOfDriver;
+    private StatusOfDriver statusOfDriver;
 
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,
+                    CascadeType.REFRESH})
+    @JoinColumn(name = "city_id")
+    private City currentCity;
 
-    City currentCity;
+    @OneToOne(fetch = LAZY, mappedBy = "driver", optional = false)
+    private Truck currentTruck;
 
-    Truck currentTruck;
-
-
-    //?
-    List<Order> orders;
-
-
-
+//	водитель не выполняет сейчас другие заказы;
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,
+                    CascadeType.REFRESH})
+    @JoinColumn(name = "order_id")
+    private Order orderForDriver;
 }

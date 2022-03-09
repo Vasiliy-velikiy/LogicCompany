@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 /**
  * @author Vasiliy  Moskalev
  * @version 1.1
@@ -20,28 +22,35 @@ public class Truck {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column
-    String registrationNumber;
+    private String registrationNumber;
+
+    //размер смены водителей
+    @Column
+    private Double changeTimeOfDriver;
 
     @Column
-    Double changeTimeOfDriver;
-
-    @Column
-    Double truckCapacity;
+    private Double truckCapacity;
 
     /**
      * This field describes serviceable or defective
      */
     @Column
-    Boolean workStatus;
+    private Boolean workStatus;
 
     //?
-    City currentCity;
+   // private City currentCity;
 
-    //?
-    Driver driver;
+    @OneToOne(fetch = LAZY)
+    @JoinColumn(name = "driver_id")
+    private Driver driver;
+
+    @OneToOne(fetch = LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
+
 
 
 

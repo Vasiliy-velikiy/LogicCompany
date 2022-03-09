@@ -23,21 +23,21 @@ public class Cargo {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column
-    String numberOfCargo;
+    private String numberOfCargo;
 
     @Column
-    String nameOfCargo;
+    private String nameOfCargo;
 
     /**
      * weight in kilograms
      */
     @Column
-    Double weight;
+    private Double weight;
 
     @Column
     @Enumerated(STRING)
-    StatusOfCargo statusOfCargo;
+    private StatusOfCargo statusOfCargo;
 }
