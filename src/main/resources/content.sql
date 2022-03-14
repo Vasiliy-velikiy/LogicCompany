@@ -34,6 +34,6 @@ values (8,'sd345e',10,true,1,1,2),
        (9,'tr326d',12,false,6,3,5);
 
 insert into way_point(is_loading, cargo_id_for_waypoint, city_id_for_waypoint)
-VALUE(true,1,1),
+    VALUE(true,1,1),
     (false,2,2),
     (true,1,2);

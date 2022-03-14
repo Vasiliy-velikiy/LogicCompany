@@ -7,12 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface CargoRepository extends JpaRepository<Cargo,Integer> {
+public interface CargoRepository extends JpaRepository<Cargo,Long> {
 
     Optional<Cargo>findCargoByNumberOfCargo(String numberOfCargo);
 
-    Optional<Cargo> findById(Long id);
-
-    void deleteById(Long id);
 
 }

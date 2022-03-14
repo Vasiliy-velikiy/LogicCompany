@@ -24,7 +24,6 @@ public class CargoDto {
      */
     private Double weight;
 
-
     private StatusOfCargo statusOfCargo;
 
     //private List<WayPoint> wayPoints;

@@ -14,12 +14,10 @@ public class CargoController  {
 
     private final CargoService cargoService;
 
-
     @PostMapping
     public void create(@RequestBody CargoToCreateDto cargoToCreateDto) {
         cargoService.create(cargoToCreateDto);
     }
-
 
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Long id) {
@@ -35,7 +33,6 @@ public class CargoController  {
     public Page<CargoDto> readAll() {
         return cargoService.readAll();
     }
-
 
     @PatchMapping(path = "/{id}")
     public void update(@PathVariable Long id, @RequestBody CargoDto cargoDto) {
