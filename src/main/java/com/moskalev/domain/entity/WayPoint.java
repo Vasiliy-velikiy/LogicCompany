@@ -48,4 +48,11 @@ public class WayPoint {
     @Column
     private Boolean isLoading;
 
+
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,
+                    CascadeType.REFRESH})
+    @JoinColumn(name = "order_id_for_waypoint")
+    private Order orderForWayPoint;
+
 }

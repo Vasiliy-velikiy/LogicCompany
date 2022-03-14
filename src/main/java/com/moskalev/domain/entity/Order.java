@@ -45,11 +45,7 @@ public class Order {
     @OneToOne(fetch = LAZY, mappedBy = "order", optional = false)
     private Truck currentTruck;
 
-    /**
-     * list Of way Points :City ,Cargo, Type loading/unloading
-     */
-    //заказ может пройти через список маршрутных точек, а у маршрутной точки только 1 заказ
-    //private List <WayPoint> wayPoints;
+
 
     /**List of drivers who fulfill the order*/
 
@@ -58,4 +54,13 @@ public class Order {
     //	Список водителей, которые выполняют заказ-требование в условии
     private List <Driver> drivers;
 
+
+    /**
+     * list Of way Points :City ,Cargo, Type loading/unloading
+     */
+    //заказ может пройти через список маршрутных точек, а у маршрутной точки только 1 заказ
+
+    @OneToMany(mappedBy = "orderForWayPoint",
+            cascade = {PERSIST, MERGE})
+    private List <WayPoint> wayPoints;
 }
