@@ -48,8 +48,8 @@ public class Driver {
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {CascadeType.MERGE,
                     CascadeType.REFRESH})
-    @JoinColumn(name = "city_id")
-    private City currentCity;
+    @JoinColumn(name = "city_id_for_driver")
+    private City currentCityforDriver;
 
     @OneToOne(fetch = LAZY, mappedBy = "driver", optional = false)
     private Truck currentTruck;

@@ -6,6 +6,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.util.List;
+
+import static javax.persistence.CascadeType.*;
+import static javax.persistence.CascadeType.REFRESH;
 import static javax.persistence.EnumType.STRING;
 
 /**
@@ -25,6 +29,7 @@ public class Cargo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**unique value*/
     @Column
     private String numberOfCargo;
 
@@ -40,4 +45,9 @@ public class Cargo {
     @Column
     @Enumerated(STRING)
     private StatusOfCargo statusOfCargo;
+
+    @OneToMany(mappedBy = "currentCargoForWayPoint",
+            orphanRemoval = true,
+            cascade = {PERSIST, MERGE, DETACH, REFRESH})
+    private List<WayPoint> wayPointList;
 }

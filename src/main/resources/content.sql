@@ -1,4 +1,3 @@
-
 INSERT cargo(name_of_cargo, number_of_cargo, status_of_cargo, weight)
 VALUES ('iPhone X', '34_sadcss', 'PREPARED', 760.6),
        ('Shoes', '34_sadcsdfss', 'SHIPPED', 3400),
@@ -24,23 +23,17 @@ insert orders(is_completed, unique_number)
     (false,'3dewrf'),
     (false,'werfv43');
 
-insert  driver(first_name, last_name, hours_worked_per_month, personal_number, status_of_driver, city_id, order_id)
+insert  driver(first_name, last_name, hours_worked_per_month, personal_number, status_of_driver, city_id_for_driver, order_id)
     VALUE('Moskalev','Vasiliy',0,'0001','REST',1,2),
     ('Zelenev','Nikolay',130,'00234','SHIFT',3,4),
     ('Maslov','Kirill',90.5,'0032','DRIVING',6,5);
 
-insert into truck (change_time_of_driver, registration_number, truck_capacity, work_status, driver_id, order_id)
-values (8,'sd345e',10,true,1,2),
-       (12,'ww111w',0.6,true,2,4),
-       (9,'tr326d',12,false,3,5);
+insert into truck (change_time_of_driver, registration_number, truck_capacity, work_status,city_id_for_truck, driver_id, order_id)
+values (8,'sd345e',10,true,1,1,2),
+       (12,'ww111w',0.6,true,3,2,4),
+       (9,'tr326d',12,false,6,3,5);
 
-
-
-
-
-
-
-
-
-
-
+insert into way_point(is_loading, cargo_id_for_waypoint, city_id_for_waypoint)
+VALUE(true,1,1),
+    (false,2,2),
+    (true,1,2);

@@ -33,5 +33,6 @@ public class MapOfCountry {
             cascade = {PERSIST, MERGE, DETACH, REFRESH})
     private List <City> cities;
 
+    //?
   //private List<Double> distances;
 }

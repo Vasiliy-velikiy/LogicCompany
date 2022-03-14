@@ -41,8 +41,11 @@ public class Truck {
     @Column
     private Boolean workStatus;
 
-    //?
-   // private City currentCity;
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,
+                    CascadeType.REFRESH})
+    @JoinColumn(name = "city_id_for_truck")
+    private City currentCityforTruck;
 
     @OneToOne(fetch = LAZY)
     @JoinColumn(name = "driver_id")

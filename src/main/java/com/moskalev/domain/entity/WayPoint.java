@@ -23,27 +23,29 @@ public class WayPoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-
     //у маршрутной точки только 1 город, на стороне города -список маршрутных точек, так как город
     //может принадлижать списку маршрутных точек
-   // private City city;
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = {CascadeType.MERGE,
+                    CascadeType.REFRESH})
+    @JoinColumn(name = "city_id_for_waypoint")
+    private City currentCityForWayPoint;
 
     /**
      * ГРУЗ
      */
     //у мар точки только 1 груз, у груза -список маршрутных точек?
-   // private Cargo currentCargo;
+    @ManyToOne(fetch = FetchType.EAGER,
+            cascade = {CascadeType.MERGE,
+                    CascadeType.REFRESH})
+    @JoinColumn(name = "cargo_id_for_waypoint")
+    private Cargo currentCargoForWayPoint;
 
     /**
-     * Type loading/unloading
+     * Type true- loading
+     * false-unloading
      */
     @Column
     private Boolean isLoading;
-
-    //так как заказ имеет список маршрутных точек-то маршрутная точка имеет 1 заказ?
-   // private List<Order> orderList;
-    //может ли у маршрутной точки быть только 1 заказ?
-   // private Order order;
 
 }

@@ -42,11 +42,20 @@ public class City {
     private MapOfCountry mapOfCountry;
 
 
-    @OneToMany(mappedBy = "currentCity",
+    @OneToMany(mappedBy = "currentCityforDriver",
             orphanRemoval = true,
             cascade = {PERSIST, MERGE, DETACH, REFRESH})
     private List<Driver> driverList;
 
+    @OneToMany(mappedBy = "currentCityforTruck",
+            orphanRemoval = true,
+            cascade = {PERSIST, MERGE, DETACH, REFRESH})
+    private List<Truck> trucksList;
+
+
     //любой город может принадлежать списку маршрутных точек-но у маршрутной точки только 1 город
-    //private List
+    @OneToMany(mappedBy = "currentCityForWayPoint",
+            orphanRemoval = true,
+            cascade = {PERSIST, MERGE, DETACH, REFRESH})
+    private List <WayPoint>wayPointsList;
 }
