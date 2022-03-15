@@ -3,7 +3,6 @@ package com.moskalev.domain.mapper;
 
 import com.moskalev.domain.dto.impl.orderDto.OrderDto;
 import com.moskalev.domain.dto.impl.orderDto.OrderToCreateDto;
-import com.moskalev.domain.entity.City;
 
 import com.moskalev.domain.entity.Order;
 
@@ -33,7 +32,7 @@ public class OrderMapper {
     }
 
     public OrderDto convertToDto(Order order) {
-        OrderDto  orderDto = new OrderDto();
+        OrderDto orderDto = new OrderDto();
         orderDto.setIsCompleted(order.getIsCompleted());
         orderDto.setUniqueNumber(order.getUniqueNumber());
         return orderDto;
