@@ -39,4 +39,10 @@ insert into way_point(is_loading, cargo_id_for_waypoint, city_id_for_waypoint,or
     (true,3,3,4),
     (true,2,4,3);
 
+insert into persons(email, first_name, last_name, password, role)
+VALUES('test@mail','Nikita','Nikiforov','ertf2323REFDSFACXVD@45ddsa','ADMIN'),
+      ('test2@mail','Moskalev','Vasiliy','23edsfertf2323REFDSFACXVD@45ddsa','DRIVER'),
+      ('t2WDest@mail','Jenia','Ivanov','32rdsffgva','EMPLOYEE'),
+      ('testwe2@mail','Maslov','Kirill','22e3edwsfertf2323REFDSFACXVD@45ddsa','DRIVER');
+
 
