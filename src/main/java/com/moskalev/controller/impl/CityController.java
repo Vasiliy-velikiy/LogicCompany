@@ -27,7 +27,7 @@ public class CityController {
     public void delete(@PathVariable Long id) {
         cityService.delete(id);
     }
-//
+
     @GetMapping(path = "/{id}")
     public CityDto read(@PathVariable Long id) {
         return cityService.read(id);

@@ -2,6 +2,7 @@ package com.moskalev.service.impl;
 
 
 
+import com.moskalev.domain.dto.impl.orderDto.OrderDto;
 import com.moskalev.domain.dto.impl.orderDto.OrderToCreateDto;
 
 import com.moskalev.domain.entity.Order;
@@ -47,34 +48,33 @@ public class OrderService {
             throw new CustomException(String.format("City with id : %s not found ", id));
         }
     }
-//
-//    public OrderDto read(Long id) {
-//        Optional<Order> cargoOptional = orderRepository.findById(id);
-//        if (cargoOptional.isPresent()) {
-//            Order city = cargoOptional.get();
-//            //  Hibernate.initialize(cargo.getWayPointList());
-//            OrderDto cityDto = orderMapper.convertToDto(city);
-//            return cityDto;
-//        } else {
-//            throw new CustomException(String.format("City with id : %s not found ", id));
-//        }
-//    }
-//
-//    public Page<OrderDto> readAll() {
-//        List<OrderDto> listCargo = orderMapper.convertListToDto(orderRepository.findAll());
-//        Pageable firstPageWithTwoElements = PageRequest.of(0, listCargo.size());
-//        return new PageImpl<>(listCargo, firstPageWithTwoElements, listCargo.size());
-//    }
-//
-//    public void update(Long id, OrderDto cityDto) {
-//        Optional<Order> cityOptional = orderRepository.findById(id);
-//        if (cityOptional.isPresent()) {
-//            Order target = cityOptional.get();
-//            Order source = orderMapper.convertFromDto(cityDto);
-//            orderRepository.save(mergeMapperForOrder.merge(target, source));
-//        } else {
-//            throw new CustomException(String.format("City with id : %s not found ", id));
-//        }
-//    }
-//
+
+    public OrderDto read(Long id) {
+        Optional<Order> orderOptional = orderRepository.findById(id);
+        if (orderOptional.isPresent()) {
+            Order order = orderOptional.get();
+            //  Hibernate.initialize(cargo.getWayPointList());
+            OrderDto orderDto = orderMapper.convertToDto(order);
+            return orderDto;
+        } else {
+            throw new CustomException(String.format("City with id : %s not found ", id));
+        }
+    }
+
+    public Page<OrderDto> readAll() {
+        List<OrderDto> orderDtoList = orderMapper.convertListToDto(orderRepository.findAll());
+        Pageable firstPageWithTwoElements = PageRequest.of(0, orderDtoList.size());
+        return new PageImpl<>(orderDtoList, firstPageWithTwoElements, orderDtoList.size());
+    }
+
+    public void update(Long id, OrderDto cityDto) {
+        Optional<Order> orderOptional = orderRepository.findById(id);
+        if (orderOptional.isPresent()) {
+            Order target = orderOptional.get();
+            Order source = orderMapper.convertFromDto(cityDto);
+            orderRepository.save(mergeMapperForOrder.merge(target, source));
+        } else {
+            throw new CustomException(String.format("City with id : %s not found ", id));
+        }
+    }
 }
