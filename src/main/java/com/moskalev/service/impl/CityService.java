@@ -55,6 +55,8 @@ public class CityService {
             //  Hibernate.initialize(cargo.getWayPointList());
             CityDto cityDto = cityMapper.convertToDto(city);
             return cityDto;
+
+            //у спринга есть проекции -сразу мапить проекции -
         } else {
             throw new CustomException(String.format("City with id : %s not found ", id));
         }

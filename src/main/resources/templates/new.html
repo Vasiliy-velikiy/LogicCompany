@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>new Person </title>
+</head>
+<body>
+
+<!--/*@thymesVar id="person" type="com.moskalev.domain.entity.Person"*/-->
+<form th:method="POST" th:action="@{api/persons}" th:object="${person}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{firstName}" id="name"/>
+    <br/>
+
+    <input type="submit" value="Add person"/>
+
+</form>
+</body>
+</html>

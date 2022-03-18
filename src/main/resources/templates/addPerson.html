@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Create a Person:</h1>
+
+<!--
+   In Thymeleaf the equivalent of
+   JSP's ${pageContext.request.contextPath}/edit.html
+   would be @{/edit.html}
+   -->
+
+<!--/*@thymesVar id="person" type="com.moskalev.domain.dto.impl.personDto.PersonToCreateDto"*/-->
+<form th:action="@{/api/persons}" th:method="POST" th:object="${person}">
+        <label for="name">First Name</label>
+        <input type="text" name="name" id="name"/>
+
+        <br>
+
+        <label for="surname">Last Name</label>
+        <input type="text" name="surname" id="surname"/>
+
+        <br>
+
+        <label for="email">Email</label>
+        <input type="text" name="surname" id="email"/>
+
+        <br>
+
+        <label for="password">Password</label>
+        <input type="text" name="password" id="password"/>
+
+        <br>
+
+        <label for="role">Role</label>
+        <input type="text" name="role" id="role"/>
+
+        <br>
+
+        <input type="submit" value="Add person"/>
+    </form>
+
+<br/>
+
+<!-- Check if errorMessage is not null and not empty -->
+
+</body>
+</html>

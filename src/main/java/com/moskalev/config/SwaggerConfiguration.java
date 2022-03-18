@@ -15,4 +15,5 @@ import org.springframework.context.annotation.Configuration;
         version = "1.0.0",
         description = "Logic company"))
 public class SwaggerConfiguration {
+
 }

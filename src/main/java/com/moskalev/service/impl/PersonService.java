@@ -52,11 +52,17 @@ public class PersonService {
     /**
      * @return page of all Person in table person. We used initialize() for fetch List
      */
-    public Page<PersonDto> readAll() {
+//    public Page<PersonDto> readAll() {
+//        List<PersonDto> listPersons = personMapper.convertListToDto(personRepository.findAll());
+//        Pageable firstPageWithTwoElements = PageRequest.of(0, listPersons.size());
+//        return new PageImpl<>(listPersons, firstPageWithTwoElements, listPersons.size());
+//    }
+
+    public List<PersonDto> readAll() {
         List<PersonDto> listPersons = personMapper.convertListToDto(personRepository.findAll());
-        Pageable firstPageWithTwoElements = PageRequest.of(0, listPersons.size());
-        return new PageImpl<>(listPersons, firstPageWithTwoElements, listPersons.size());
+        return listPersons;
     }
+
 
     /**
      * @param email certain email that is unique
