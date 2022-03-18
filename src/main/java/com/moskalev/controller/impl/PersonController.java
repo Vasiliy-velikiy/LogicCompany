@@ -100,19 +100,19 @@ public class PersonController {
      //   return "addPerson";
     }
 
-//    @GetMapping("/new")
-//    public String newPerson(Model model){
-//        model.addAttribute("person",new Person());
-//
-//        return "new";
-//
-//    }
-@GetMapping("/new")
-public ModelAndView newPerson() {
-    ModelAndView modelAndView = new ModelAndView();
-    modelAndView.setViewName("/new");
-    return modelAndView;
-}
+    @GetMapping("/new")
+    public String newPerson(Model model){
+        model.addAttribute("person",new Person());
+
+        return "new";
+
+    }
+//@GetMapping("/new")
+//public ModelAndView newPerson() {
+//    ModelAndView modelAndView = new ModelAndView();
+//    modelAndView.setViewName("/new");
+//    return modelAndView;
+//}
 
     /**
      * @param id -object that we want to delete
