@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DriverList</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Driver List</h1>
+<!--<a href="addPerson">Add Person</a>-->
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Personal Number</th>
+            <th>hoursWorked</th>
+            <th>Status</th>
+            <th>CurrentCity</th>
+            <th>NumberOfTruck</th>
+            <th>CurrentOrder</th>
+            <th>EDIT</th>
+            <th>REMOVE</th>
+        </tr>
+
+        <!--/*@thymesVar id="persons" type="com.moskalev.domain.dto.impl.driverDto.DriverDto"*/-->
+        <tr th:each="driver : ${drivers}">
+            <td th:utext="${driver.firstName}">...</td>
+            <td th:utext="${driver.lastName}">...</td>
+            <td th:utext="${driver.personalNumber}">...</td>
+            <td th:utext="${driver.hoursWorkedPerMonth}">...</td>
+            <td th:utext="${driver.statusOfDriver}">...</td>
+            <td th:utext="${driver.currentCityForDriver}">...</td>
+            <td th:utext="${driver.currentNumberOfTruckForDriver}">...</td>
+            <td th:utext="${driver.currentOrderOfNumber}">...</td>
+
+
+            <td><a th:href="@{/api/driver/{personNumber}/edit(personNumber=${driver.getPersonalNumber()})}">Edit</a></td>
+
+            <td>
+                <form th:method="DELETE" th:action="@{/api/driver/{personNumber}(personNumber=${driver.getPersonalNumber()})}">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <br/>
+    <hr/>
+    <a href="/api/driver/new">Create new driver</a>
+
+</div>
+</body>
+</html>

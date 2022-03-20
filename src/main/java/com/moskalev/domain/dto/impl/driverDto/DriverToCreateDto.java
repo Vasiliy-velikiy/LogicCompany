@@ -7,6 +7,9 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import static javax.persistence.EnumType.STRING;
@@ -27,10 +30,10 @@ public class DriverToCreateDto {
     @Size(max = 30)
     private String personalNumber;
 
-    @NotBlank
+
     private Double hoursWorkedPerMonth;
 
-    @NotBlank
+    @NotNull
     private StatusOfDriver statusOfDriver;
 
     private Long currentTruckId;

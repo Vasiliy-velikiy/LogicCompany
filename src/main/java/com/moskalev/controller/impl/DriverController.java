@@ -4,11 +4,15 @@ import com.moskalev.domain.dto.impl.cityDto.CityDto;
 import com.moskalev.domain.dto.impl.cityDto.CityToCreateDto;
 import com.moskalev.domain.dto.impl.driverDto.DriverDto;
 import com.moskalev.domain.dto.impl.driverDto.DriverToCreateDto;
+import com.moskalev.domain.dto.impl.personDto.PersonToCreateDto;
 import com.moskalev.service.impl.DriverService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
@@ -18,29 +22,48 @@ public class DriverController {
 
     private final DriverService driverService;
 
+
+
+    @GetMapping("/new")
+    public String newDriver(@ModelAttribute("driver") DriverToCreateDto person){
+        return "driver/new";
+    }
+
     @PostMapping
-    public void create(@RequestBody DriverToCreateDto driverToCreateDto) {
+    public String create(Model model, @ModelAttribute("driver") @Valid DriverToCreateDto driverToCreateDto) {
         driverService.create(driverToCreateDto);
+        return "redirect:/api/driver";
     }
 
-    @DeleteMapping(path = "/{id}")
-    public void delete(@PathVariable Long id) {
-        driverService.delete(id);
+    @DeleteMapping(path = "/{personNumber}")
+    public String delete(@ModelAttribute @PathVariable String personNumber) {
+        driverService.delete(personNumber);
+        return "redirect:/api/driver";
     }
 
-    @GetMapping(path = "/{id}")
-    public DriverDto read(@PathVariable Long id) {
-        return driverService.read(id);
-    }
+//    @GetMapping(path = "/{uniqueNumber}")
+//    public String read(@PathVariable String uniqueNumber, Model model) {
+//        model.addAttribute("driver"driverService.read(uniqueNumber);
+//    }
+
+
 
     @GetMapping
-    public Page<DriverDto> readAll() {
-        return driverService.readAll();
+    public String readAll(Model model) {
+        model.addAttribute("drivers", driverService.readAll());
+        return "driver/driverList";
     }
 
-    @PatchMapping(path = "/{id}")
-    public void update(@PathVariable Long id, @RequestBody DriverDto driverDto) {
-        driverService.update(id, driverDto);
+    @GetMapping("/{personNumber}/edit")
+    public String edit(Model model, @PathVariable("personNumber") String personNumber){
+        model.addAttribute("driver",driverService.read(personNumber));
+        return "driver/edit";
+    }
+
+    @PatchMapping(path = "/{personNumber}")
+    public String update(@PathVariable String personNumber,@ModelAttribute("driver") DriverDto driverDto) {
+        driverService.update(personNumber, driverDto);
+        return "redirect:/api/driver";
     }
 
 }

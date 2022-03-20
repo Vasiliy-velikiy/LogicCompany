@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update driver </title>
+</head>
+<body>
+
+<!--/*@thymesVar id="driver" type="com.moskalev.domain.dto.impl.driverDto.DriverDto"*/-->
+<form th:method="PATCH" th:action="@{/api/driver/{personNumber}(personNumber=${driver.getPersonalNumber()})}" th:object="${driver}">
+    <label for="firstname">First Name</label>
+    <input type="text" th:field="*{firstName}" id="firstname"/>
+
+    <br>
+
+    <label for="lastname">Last Name</label>
+    <input type="text" th:field="*{lastName}" id="lastname"/>
+
+    <br>
+
+    <label for="personalNumber">personalNumber</label>
+    <input type="text" th:field="*{personalNumber}" id="personalNumber"/>
+
+    <br>
+
+    <label for="hoursWorkedPerMonth">hoursWorkedPerMonth</label>
+    <input type="text" th:field="*{hoursWorkedPerMonth}" id="hoursWorkedPerMonth"/>
+
+    <br>
+
+    <label for="statusOfDriver">statusOfDriver</label>
+    <input type="text" th:field="*{statusOfDriver}" id="statusOfDriver"/>
+
+    <br>
+
+    <input type="submit" value="Update driver"/>
+
+</form>
+</body>
+</html>

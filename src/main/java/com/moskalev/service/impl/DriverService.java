@@ -39,41 +39,40 @@ public class DriverService {
         }
     }
 
-    public void delete(Long id) {
-        Optional<Driver> driverOptional = driverRepository.findById(id);
+    public void delete(String number) {
+        Optional<Driver> driverOptional = driverRepository.findByPersonalNumber( number);
         if (driverOptional.isPresent()) {
-            driverRepository.deleteById(id);
+            driverRepository.deleteById(driverOptional.get().getId());
         } else {
-            throw new CustomException(String.format("Driver with id : %s not found ", id));
+            throw new CustomException(String.format("Driver with id : %s not found ",  number));
         }
     }
 
-    public DriverDto read(Long id) {
-        Optional<Driver> driverOptional = driverRepository.findById(id);
+    public DriverDto read(String number) {
+        Optional<Driver> driverOptional = driverRepository.findByPersonalNumber(number);
         if (driverOptional.isPresent()) {
            Driver driver = driverOptional.get();
             //  Hibernate.initialize(cargo.getWayPointList());
             DriverDto driverDto = driverMapper.convertToDto(driver);
             return driverDto;
         } else {
-            throw new CustomException(String.format("Driver with id : %s not found ", id));
+            throw new CustomException(String.format("Driver with id : %s not found ", number));
         }
     }
 
-    public Page<DriverDto> readAll() {
+    public List<DriverDto> readAll() {
         List<DriverDto> driverDtoList = driverMapper.convertListToDto(driverRepository.findAll());
-        Pageable firstPageWithTwoElements = PageRequest.of(0, driverDtoList.size());
-        return new PageImpl<>(driverDtoList, firstPageWithTwoElements, driverDtoList.size());
+        return driverDtoList;
     }
 
-    public void update(Long id, DriverDto driverDto) {
-        Optional<Driver> driverOptional = driverRepository.findById(id);
+    public void update(String number, DriverDto driverDto) {
+        Optional<Driver> driverOptional = driverRepository.findByPersonalNumber(number);
         if (driverOptional.isPresent()) {
             Driver target = driverOptional.get();
             Driver source = driverMapper.convertFromDto(driverDto);
             driverRepository.save(mergeMapperForDriver.merge(target, source));
         } else {
-            throw new CustomException(String.format("Driver with id : %s not found ", id));
+            throw new CustomException(String.format("Driver with id : %s not found ", number));
         }
     }
 }
