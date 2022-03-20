@@ -13,10 +13,10 @@ import java.util.List;
 @Setter
 public class CargoDto {
 
-    @Size(max = 30)
+
     private String numberOfCargo;
 
-    @Size(max = 30)
+
     private String nameOfCargo;
 
     /**

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update truck </title>
+</head>
+<body>
+
+
+<!--/*@thymesVar id="cargo" type="com.moskalev.domain.dto.impl.CargoDto.CargoDto"*/-->
+<form th:method="PATCH" th:action="@{/api/cargo/{name}(name=${cargo.getNumberOfCargo()})}" th:object="${cargo}">
+
+
+    <label for="numberOfCargo">numberOfCargo</label>
+    <input type="text" th:field="*{numberOfCargo}" id="numberOfCargo"/>
+
+    <br>
+
+    <label for="nameOfCargo">nameOfCargo</label>
+    <input type="text" th:field="*{nameOfCargo}" id="nameOfCargo"/>
+
+    <br>
+
+    <label for="weight">weight</label>
+    <input type="text" th:field="*{weight}" id="weight"/>
+
+    <br>
+
+    <label for="statusOfCargo">statusOfCargo</label>
+    <input type="text" th:field="*{statusOfCargo}" id="statusOfCargo"/>
+
+    <br>
+    <input type="submit" value="Update cargo"/>
+
+
+</form>
+</body>
+</html>

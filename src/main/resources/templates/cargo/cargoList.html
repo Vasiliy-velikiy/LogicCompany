@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cargo List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Cargo List</h1>
+<!--<a href="addPerson">Add Person</a>-->
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>NumberOfCargo</th>
+            <th>NameOfCargo</th>
+            <th>Weight</th>
+            <th>StatusOfCargo</th>
+            <th>EDIT</th>
+            <th>REMOVE</th>
+
+
+        </tr>
+
+        <!--/*@thymesVar id="persons" type="com.moskalev.domain.dto.impl.CargoDto.CargoDto"*/-->
+        <tr th:each="cargo : ${cargos}">
+            <td th:utext="${cargo.numberOfCargo}">...</td>
+            <td th:utext="${cargo.nameOfCargo}">...</td>
+            <td th:utext="${cargo.weight}">...</td>
+            <td th:utext="${cargo.statusOfCargo}">...</td>
+
+
+            <td><a th:href="@{/api/cargo/{name}/edit(name=${cargo.getNumberOfCargo()})}">Edit</a></td>
+            <td>
+                <form th:method="DELETE" th:action="@{/api/cargo/{name}(name=${cargo.getNumberOfCargo()})}">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+
+        </tr>
+    </table>
+    <br/>
+    <hr/>
+    <a href="/api/cargo/new">Create new cargo</a>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>new Truck </title>
+</head>
+<body>
+
+<!--/*@thymesVar id="person" type="com.moskalev.domain.dto.impl.CargoDto.CargoToCreateDto"*/-->
+<form th:method="POST" th:action="@{/api/cargo}" th:object="${cargo}">
+
+    <label for="numberOfCargo">numberOfCargo</label>
+        <input type="text" name="numberOfCargo" id="numberOfCargo"/>
+
+        <br>
+
+        <label for="nameOfCargo">nameOfCargo</label>
+        <input type="text" name="nameOfCargo" id="nameOfCargo"/>
+
+        <br>
+
+        <label for="weight">weight</label>
+        <input type="text" name="weight" id="weight"/>
+
+        <br>
+
+        <label for="statusOfCargo">statusOfCargo</label>
+        <input type="text" name="statusOfCargo" id="statusOfCargo"/>
+
+        <br>
+        <input type="submit" value="Add cargo"/>
+
+</form>
+</body>
+</html>

@@ -37,41 +37,40 @@ public class CargoService {
         }
     }
 
-    public void delete(Long id) {
-        Optional<Cargo> cargoOptional = cargoRepository.findById(id);
+    public void delete(String name) {
+        Optional<Cargo> cargoOptional = cargoRepository.findCargoByNumberOfCargo(name);
         if (cargoOptional.isPresent()) {
-            cargoRepository.deleteById(id);
+            cargoRepository.deleteById(cargoOptional.get().getId());
         } else {
-            throw new CustomException(String.format("Cargo with id : %s not found ", id));
+            throw new CustomException(String.format("Cargo with number : %s not found ", name));
         }
     }
 
-    public CargoDto read(Long id) {
-        Optional<Cargo> cargoOptional = cargoRepository.findById(id);
+    public CargoDto read(String name) {
+        Optional<Cargo> cargoOptional = cargoRepository.findCargoByNumberOfCargo(name);
         if (cargoOptional.isPresent()) {
             Cargo cargo = cargoOptional.get();
             //  Hibernate.initialize(cargo.getWayPointList());
             CargoDto cargoDto = cargoMapper.convertToDto(cargo);
             return cargoDto;
         } else {
-            throw new CustomException(String.format("Cargo with id : %s not found ", id));
+            throw new CustomException(String.format("Cargo with number : %s not found ", name));
         }
     }
 
-    public Page<CargoDto> readAll() {
+    public List<CargoDto> readAll() {
         List<CargoDto> listCargo = cargoMapper.convertListToDto(cargoRepository.findAll());
-        Pageable firstPageWithTwoElements = PageRequest.of(0, listCargo.size());
-        return new PageImpl<>(listCargo, firstPageWithTwoElements, listCargo.size());
+        return listCargo;
     }
 
-    public void update(Long id, CargoDto cargoDto) {
-        Optional<Cargo> cargoOptional = cargoRepository.findById(id);
+    public void update(String name, CargoDto cargoDto) {
+        Optional<Cargo> cargoOptional = cargoRepository.findCargoByNumberOfCargo(name);
         if (cargoOptional.isPresent()) {
             Cargo target = cargoOptional.get();
             Cargo source = cargoMapper.convertFromDto(cargoDto);
             cargoRepository.save(mergeMapperForCargo.merge(target, source));
         } else {
-            throw new CustomException(String.format("Cargo with id : %s not found ", id));
+            throw new CustomException(String.format("Cargo with name : %s not found ", name));
         }
     }
 }
