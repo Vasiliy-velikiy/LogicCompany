@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TruckList</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Truck List</h1>
+<!--<a href="addPerson">Add Person</a>-->
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>RegistrationNumber</th>
+            <th>ChangeTimeOfDriver</th>
+            <th>TruckCapacity</th>
+            <th>WorkStatus</th>
+            <th>City</th>
+            <th>DriverNumber</th>
+            <th>OrderNumber</th>
+            <th>EDIT</th>
+            <th>REMOVE</th>
+
+        </tr>
+
+        <!--/*@thymesVar id="persons" type="com.moskalev.domain.dto.impl.truckDto.TruckDto"*/-->
+        <tr th:each="truck : ${trucks}">
+            <td th:utext="${truck.registrationNumber}">...</td>
+            <td th:utext="${truck.changeTimeOfDriver}">...</td>
+            <td th:utext="${truck.truckCapacity}">...</td>
+            <td th:utext="${truck.workStatus}">...</td>
+            <td th:utext="${truck.city}">...</td>
+            <td th:utext="${truck.driverNumber}">...</td>
+            <td th:utext="${truck.orderNumber}">...</td>
+
+            <td><a th:href="@{/api/truck/{registrationNumber}/edit(registrationNumber=${truck.getRegistrationNumber()})}">Edit</a></td>
+            <td>
+                <form th:method="DELETE" th:action="@{/api/truck/{registrationNumber}(registrationNumber=${truck.getRegistrationNumber()})}">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+
+        </tr>
+    </table>
+    <br/>
+    <hr/>
+    <a href="/api/truck/new">Create new truck</a>
+
+
+</div>
+</body>
+</html>

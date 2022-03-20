@@ -51,7 +51,8 @@ public class Driver {
     @JoinColumn(name = "city_id_for_driver")
     private City currentCityforDriver;
 
-    @OneToOne(fetch = LAZY, mappedBy = "driver", optional = false)
+    @OneToOne(fetch = LAZY, cascade = {CascadeType.MERGE,
+            CascadeType.REFRESH}, mappedBy = "driver", optional = false)
     private Truck currentTruck;
 
 //	водитель не выполняет сейчас другие заказы-требование в условии;

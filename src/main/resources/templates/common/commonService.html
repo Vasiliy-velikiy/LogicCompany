@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Common service</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>All service</h1>
+<!--<a href="addPerson">Add Person</a>-->
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Person Service</th>
+            <th>Driver Service</th>
+            <th>Truck Service</th>
+
+        </tr>
+
+        <!--/*@thymesVar id="persons" type="com.moskalev.domain.dto.impl.truckDto.TruckDto"*/-->
+        <tr >
+
+            <td> <a th:href="@{/api/persons}">Person Service</a></td>
+            <td> <a th:href="@{/api/driver}">Driver Service</a></td>
+            <td> <a th:href="@{/api/truck}">Truck Service</a></td>
+
+        </tr>
+    </table>
+    <br/>
+    <hr/>
+
+
+
+</div>
+</body>
+</html>

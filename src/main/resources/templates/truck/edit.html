@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update truck </title>
+</head>
+<body>
+
+<!--/*@thymesVar id="driver" type="com.moskalev.domain.dto.impl.truckDto.TruckDto"*/-->
+<form th:method="PATCH" th:action="@{/api/truck/{registrationNumber}(registrationNumber=${truck.getRegistrationNumber()})}" th:object="${truck}">
+
+    <label for="registrationNumber">registrationNumber</label>
+    <input type="text" th:field="*{registrationNumber}" id="registrationNumber"/>
+
+    <br>
+
+    <label for="changeTimeOfDriver">changeTimeOfDriver</label>
+    <input type="text" th:field="*{changeTimeOfDriver}" id="changeTimeOfDriver"/>
+
+    <br>
+
+    <label for="truckCapacity">truckCapacity</label>
+    <input type="text" th:field="*{truckCapacity}" id="truckCapacity"/>
+
+    <br>
+
+    <label for="workStatus">workStatus</label>
+    <input type="text" th:field="*{workStatus}" id="workStatus"/>
+
+    <br>
+
+    <label for="city">city</label>
+    <input type="text" th:field="*{city}" id="city"/>
+
+    <br>
+
+    <label for="driverNumber">driverNumber</label>
+    <input type="text" th:field="*{driverNumber}" id="driverNumber"/>
+
+    <br>
+
+    <label for="orderNumber">orderNumber</label>
+    <input type="text" th:field="*{orderNumber}" id="orderNumber"/>
+
+    <br>
+
+    <input type="submit" value="Update truck"/>
+
+</form>
+</body>
+</html>

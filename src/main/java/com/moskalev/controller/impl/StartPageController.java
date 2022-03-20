@@ -52,4 +52,9 @@ public class StartPageController {
     public String personSignIn(@ModelAttribute("person")  PersonSignInDto person){
         return "sign/signIn";
     }
+
+    @GetMapping("/commonService")
+    public String commonPage(Model model){
+        return "common/commonService";
+    }
 }
