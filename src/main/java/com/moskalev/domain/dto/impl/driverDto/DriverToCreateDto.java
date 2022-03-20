@@ -30,7 +30,7 @@ public class DriverToCreateDto {
     @Size(max = 30)
     private String personalNumber;
 
-
+    @NotNull
     private Double hoursWorkedPerMonth;
 
     @NotNull

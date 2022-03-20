@@ -19,10 +19,7 @@ import javax.validation.Valid;
 @RequestMapping(path = "/api/driver")
 public class DriverController {
 
-
     private final DriverService driverService;
-
-
 
     @GetMapping("/new")
     public String newDriver(@ModelAttribute("driver") DriverToCreateDto person){
@@ -45,8 +42,6 @@ public class DriverController {
 //    public String read(@PathVariable String uniqueNumber, Model model) {
 //        model.addAttribute("driver"driverService.read(uniqueNumber);
 //    }
-
-
 
     @GetMapping
     public String readAll(Model model) {

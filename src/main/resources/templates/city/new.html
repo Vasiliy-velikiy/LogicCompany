@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>new Truck </title>
+</head>
+<body>
+
+<!--/*@thymesVar id="person" type="com.moskalev.domain.dto.impl.cityDto.CityToCreateDto"*/-->
+<form th:method="POST" th:action="@{/api/city}" th:object="${city}">
+
+    <label for="name">name</label>
+        <input type="text" name="name" id="name"/>
+
+        <br>
+
+        <label for="coordinateX">coordinateX</label>
+        <input type="text" name="coordinateX" id="coordinateX"/>
+
+        <br>
+
+        <label for="coordinateY">coordinateY</label>
+        <input type="text" name="coordinateY" id="coordinateY"/>
+
+        <br>
+
+        <label for="mapOfCountry">mapOfCountry</label>
+        <input type="text" name="mapOfCountry" id="mapOfCountry"/>
+
+        <br>
+        <input type="submit" value="Add city"/>
+
+</form>
+</body>
+</html>

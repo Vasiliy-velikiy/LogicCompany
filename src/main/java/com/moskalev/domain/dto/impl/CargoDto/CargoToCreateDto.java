@@ -24,7 +24,7 @@ public class CargoToCreateDto {
     /**
      * weight in kilograms
      */
-    @NotBlank
+    @NotNull
     private Double weight;
 
     @NotNull

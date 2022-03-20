@@ -39,17 +39,17 @@ public class CityService {
        }
     }
 
-    public void delete(Long id) {
-        Optional<City> cityOptional = cityRepository.findById(id);
+    public void delete(String name) {
+        Optional<City> cityOptional = cityRepository.findByName(name);
         if (cityOptional.isPresent()) {
-            cityRepository.deleteById(id);
+            cityRepository.deleteById(cityOptional.get().getId());
         } else {
-            throw new CustomException(String.format("City with id : %s not found ", id));
+            throw new CustomException(String.format("City with name : %s not found ", name));
         }
     }
 
-    public CityDto read(Long id) {
-        Optional<City> cargoOptional = cityRepository.findById(id);
+    public CityDto read(String name) {
+        Optional<City> cargoOptional = cityRepository.findByName(name);
         if (cargoOptional.isPresent()) {
             City city = cargoOptional.get();
             //  Hibernate.initialize(cargo.getWayPointList());
@@ -58,24 +58,23 @@ public class CityService {
 
             //у спринга есть проекции -сразу мапить проекции -
         } else {
-            throw new CustomException(String.format("City with id : %s not found ", id));
+            throw new CustomException(String.format("City with name : %s not found ", name));
         }
     }
 
-    public Page<CityDto> readAll() {
-        List<CityDto> listCargo = cityMapper.convertListToDto(cityRepository.findAll());
-        Pageable firstPageWithTwoElements = PageRequest.of(0, listCargo.size());
-        return new PageImpl<>(listCargo, firstPageWithTwoElements, listCargo.size());
+    public List<CityDto> readAll() {
+        List<CityDto> cityDtos = cityMapper.convertListToDto(cityRepository.findAll());
+       return cityDtos;
     }
 
-    public void update(Long id, CityDto cityDto) {
-        Optional<City> cityOptional = cityRepository.findById(id);
+    public void update(String name, CityDto cityDto) {
+        Optional<City> cityOptional = cityRepository.findByName(name);
         if (cityOptional.isPresent()) {
             City target = cityOptional.get();
             City source = cityMapper.convertFromDto(cityDto);
             cityRepository.save(mergeMapperForCity.merge(target, source));
         } else {
-            throw new CustomException(String.format("City with id : %s not found ", id));
+            throw new CustomException(String.format("City with id : %s not found ", name));
         }
     }
 }

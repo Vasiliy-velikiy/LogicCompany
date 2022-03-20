@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>City List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>City  List</h1>
+<!--<a href="addPerson">Add Person</a>-->
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>CoordinateX</th>
+            <th>CoordinateY</th>
+            <th>Country</th>
+            <th>EDIT</th>
+            <th>REMOVE</th>
+
+
+        </tr>
+
+        <!--/*@thymesVar id="persons" type="com.moskalev.domain.dto.impl.cityDto.CityDto"*/-->
+        <tr th:each="city : ${cites}">
+            <td th:utext="${city.name}">...</td>
+            <td th:utext="${city.coordinateX}">...</td>
+            <td th:utext="${city.coordinateY}">...</td>
+            <td th:utext="${city.mapOfCountry}">...</td>
+
+
+            <td><a th:href="@{/api/city/{name}/edit(name=${city.getName()})}">Edit</a></td>
+            <td>
+                <form th:method="DELETE" th:action="@{/api/city/{name}(name=${city.getName()})}">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+
+        </tr>
+    </table>
+    <br/>
+    <hr/>
+    <a href="/api/city/new">Create new city</a>
+
+
+</div>
+</body>
+</html>

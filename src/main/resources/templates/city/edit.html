@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update truck </title>
+</head>
+<body>
+
+<!--/*@thymesVar id="driver" type="com.moskalev.domain.dto.impl.cityDto.CityDto"*/-->
+<form th:method="PATCH" th:action="@{/api/city/{name}(name=${city.getName()})}" th:object="${city}">
+
+    <label for="name">name</label>
+    <input type="text" th:field="*{name}" id="name"/>
+
+    <br>
+
+    <label for="coordinateX">coordinateX</label>
+    <input type="text" th:field="*{coordinateX}" id="coordinateX"/>
+
+    <br>
+
+    <label for="coordinateY">coordinateY</label>
+    <input type="text" th:field="*{coordinateY}" id="coordinateY"/>
+
+    <br>
+
+    <label for="mapOfCountry">mapOfCountry</label>
+    <input type="text" th:field="*{mapOfCountry}" id="mapOfCountry"/>
+
+    <br>
+
+    <input type="submit" value="Update city"/>
+
+</form>
+</body>
+</html>

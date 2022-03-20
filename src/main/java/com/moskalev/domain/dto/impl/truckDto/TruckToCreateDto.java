@@ -16,17 +16,18 @@ public class TruckToCreateDto {
     @NotBlank
     private String registrationNumber;
 
-
+    @NotNull
     //размер смены водителей
     private Double changeTimeOfDriver;
 
-
+    @NotNull
     private Double truckCapacity;
 
     /**
      * This field describes serviceable or defective
      */
 
+    @NotNull
     private Boolean workStatus;
 
 

@@ -28,7 +28,7 @@ public class CityMapper {
         city.setCoordinateX(cityToCreateDto.getCoordinateX());
         city.setCoordinateY(cityToCreateDto.getCoordinateY());
         city.setName(cityToCreateDto.getName());
-        city.setMapOfCountry(mapOfCountryRepository.findById(cityToCreateDto.getMapOfCountry()).get());
+        city.setMapOfCountry(mapOfCountryRepository.findByMapName(cityToCreateDto.getMapOfCountry()).get());
         return city;
     }
 
