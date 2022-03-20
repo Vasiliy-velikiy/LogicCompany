@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update person </title>
+</head>
+<body>
+
+<!--/*@thymesVar id="person" type="com.moskalev.domain.dto.impl.personDto.PersonDto"*/-->
+<form th:method="PATCH" th:action="@{/api/persons/{email}(email=${person.getEmail()})}" th:object="${person}">
+    <label for="firstname">First Name</label>
+    <input type="text" th:field="*{firstName}" id="firstname"/>
+
+    <br>
+
+    <label for="lastname">Last Name</label>
+    <input type="text" th:field="*{lastName}" id="lastname"/>
+
+    <br>
+
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email"/>
+
+    <br>
+
+    <label for="password">Password</label>
+    <input type="text"  id="password"/>
+
+    <br>
+
+    <label for="role">Role</label>
+    <input type="text" th:field="*{role}" id="role"/>
+
+    <br>
+
+    <input type="submit" value="Update person"/>
+
+</form>
+</body>
+</html>

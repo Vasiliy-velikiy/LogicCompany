@@ -5,9 +5,10 @@ import com.moskalev.domain.dto.impl.CargoDto.CargoToCreateDto;
 import com.moskalev.service.impl.CargoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping(path = "/api/cargo")
 public class CargoController  {

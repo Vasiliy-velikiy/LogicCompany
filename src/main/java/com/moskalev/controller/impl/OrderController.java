@@ -5,9 +5,10 @@ import com.moskalev.domain.dto.impl.orderDto.OrderToCreateDto;
 import com.moskalev.service.impl.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping(path = "/api/orders")
 public class OrderController {

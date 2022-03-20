@@ -2,10 +2,7 @@ package com.moskalev.domain.dto.impl.personDto;
 
 import com.moskalev.domain.entity.Role;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.jackson.Jacksonized;
 
 import javax.validation.constraints.Email;
@@ -21,14 +18,15 @@ import static lombok.AccessLevel.PRIVATE;
  * @since 09.03.22
  * Class  for transfer user data for create in Database
  */
-@AllArgsConstructor(access = PRIVATE)
+
 @Getter
 @Setter
 @Schema(name = "PersonCreateInfo", description = "Info about person to create")
+@RequiredArgsConstructor
 public class PersonToCreateDto {
 
     @Schema(description = "first name", required = true)
-    @NotBlank
+    @NotBlank(message = "first name should be valid")
     @Size(max = 300)
     private String firstName;
 
@@ -39,7 +37,7 @@ public class PersonToCreateDto {
 
     @Schema(description = "email", required = true)
     @NotBlank
-    @Email
+    @Email(message = "email should be valid")
     @Size(max = 30)
     private String email;
 

@@ -8,9 +8,10 @@ import com.moskalev.domain.entity.City;
 import com.moskalev.service.impl.CityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping(path = "/api/city")
 public class CityController {

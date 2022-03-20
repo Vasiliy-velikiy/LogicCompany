@@ -16,7 +16,7 @@ import static lombok.AccessLevel.PRIVATE;
  * @since 25.02.22
  * Class  for transfer user data for sign in
  */
-@AllArgsConstructor(access = PRIVATE)
+@RequiredArgsConstructor
 @Getter
 @Setter
 @Schema(name = "PersonSignIn", description = "Info about person to sign in")

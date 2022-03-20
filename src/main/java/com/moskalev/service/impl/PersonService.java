@@ -96,11 +96,11 @@ public class PersonService {
     }
 
     /**
-     * @param id -certain email
+     * @param email -certain email
      * @throws CustomException if  Person not found
      */
-    public void delete(Long id) {
-        Optional<Person> optionalPerson = personRepository.findById(id);
+    public void delete(String email) {
+        Optional<Person> optionalPerson = personRepository.findByEmail(email);
         if (optionalPerson.isPresent()) {
             Person person = optionalPerson.get();
             personRepository.delete(person);
@@ -114,8 +114,8 @@ public class PersonService {
      * @param newPerson -new Person that we want to put in database
      * @throws CustomException if Person not found
      */
-    public void update(Long id, PersonDto newPerson) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        Optional<Person> optionalPerson = personRepository.findById(id);
+    public void update(String email, PersonDto newPerson) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+        Optional<Person> optionalPerson = personRepository.findByEmail(email);
         if (optionalPerson.isPresent()) {
             Person target = optionalPerson.get();
             Person source = personMapper.fromDto(newPerson);
