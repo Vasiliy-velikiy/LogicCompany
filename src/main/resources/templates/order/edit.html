@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update order </title>
+</head>
+<body>
+
+<!--/*@thymesVar id="driver" type="com.moskalev.domain.dto.impl.orderDto.OrderDto"*/-->
+<form th:method="PATCH" th:action="@{/api/orders/{uniqueNumber}(uniqueNumber=${order.getUniqueNumber()})}" th:object="${order}">
+
+    <label for="uniqueNumber">uniqueNumber</label>
+    <input type="text" th:field="*{uniqueNumber}" id="uniqueNumber"/>
+
+    <br>
+
+    <label for="isCompleted">isCompleted</label>
+    <input type="text" th:field="*{isCompleted}" id="isCompleted"/>
+
+
+    <input type="submit" value="Update order"/>
+
+</form>
+</body>
+</html>

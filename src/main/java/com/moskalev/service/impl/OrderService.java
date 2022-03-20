@@ -40,41 +40,40 @@ public class OrderService {
         }
     }
 
-    public void delete(Long id) {
-        Optional<Order> cityOptional = orderRepository.findById(id);
+    public void delete(String number) {
+        Optional<Order> cityOptional = orderRepository.findOrderByUniqueNumber(number);
         if (cityOptional.isPresent()) {
-            orderRepository.deleteById(id);
+            orderRepository.deleteById(cityOptional.get().getId());
         } else {
-            throw new CustomException(String.format("City with id : %s not found ", id));
+            throw new CustomException(String.format("City with number : %s not found ", number));
         }
     }
 
-    public OrderDto read(Long id) {
-        Optional<Order> orderOptional = orderRepository.findById(id);
+    public OrderDto read(String number) {
+        Optional<Order> orderOptional = orderRepository.findOrderByUniqueNumber(number);
         if (orderOptional.isPresent()) {
             Order order = orderOptional.get();
             //  Hibernate.initialize(cargo.getWayPointList());
             OrderDto orderDto = orderMapper.convertToDto(order);
             return orderDto;
         } else {
-            throw new CustomException(String.format("City with id : %s not found ", id));
+            throw new CustomException(String.format("City with number: %s not found ",number));
         }
     }
 
-    public Page<OrderDto> readAll() {
+    public List<OrderDto> readAll() {
         List<OrderDto> orderDtoList = orderMapper.convertListToDto(orderRepository.findAll());
-        Pageable firstPageWithTwoElements = PageRequest.of(0, orderDtoList.size());
-        return new PageImpl<>(orderDtoList, firstPageWithTwoElements, orderDtoList.size());
+      return orderDtoList;
     }
 
-    public void update(Long id, OrderDto cityDto) {
-        Optional<Order> orderOptional = orderRepository.findById(id);
+    public void update(String number, OrderDto cityDto) {
+        Optional<Order> orderOptional = orderRepository.findOrderByUniqueNumber(number);
         if (orderOptional.isPresent()) {
             Order target = orderOptional.get();
             Order source = orderMapper.convertFromDto(cityDto);
             orderRepository.save(mergeMapperForOrder.merge(target, source));
         } else {
-            throw new CustomException(String.format("City with id : %s not found ", id));
+            throw new CustomException(String.format("City with number : %s not found ", number));
         }
     }
 }

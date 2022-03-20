@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>new Truck </title>
+</head>
+<body>
+
+<!--/*@thymesVar id="person" type="com.moskalev.domain.dto.impl.orderDto.OrderToCreateDto"*/-->
+<form th:method="POST" th:action="@{/api/orders}" th:object="${order}">
+
+    <label for="uniqueNumber">uniqueNumber</label>
+        <input type="text" name="uniqueNumber" id="uniqueNumber"/>
+
+        <br>
+
+        <label for="isCompleted">isCompleted</label>
+        <input type="text" name="isCompleted" id="isCompleted"/>
+
+
+
+        <br>
+
+        <input type="submit" value="Add order"/>
+
+</form>
+</body>
+</html>

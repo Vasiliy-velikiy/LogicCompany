@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OrderList</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Order List</h1>
+<!--<a href="addPerson">Add Person</a>-->
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Unique Number</th>
+            <th>isCompleted</th>
+            <th>EDIT</th>
+            <th>REMOVE</th>
+
+
+        </tr>
+
+        <!--/*@thymesVar id="persons" type="com.moskalev.domain.dto.impl.orderDto.OrderDto"*/-->
+        <tr th:each="order : ${orders}">
+            <td th:utext="${order.uniqueNumber}">...</td>
+            <td th:utext="${order.isCompleted}">...</td>
+            <td><a th:href="@{/api/orders/{uniqueNumber}/edit(uniqueNumber=${order.getUniqueNumber()})}">Edit</a></td>
+            <td>
+                <form th:method="DELETE" th:action="@{/api/orders/{uniqueNumber}(uniqueNumber=${order.getUniqueNumber()})}">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <hr/>
+    <a href="/api/orders/new">Create new order</a>
+
+
+</div>
+</body>
+</html>
