@@ -11,22 +11,22 @@
 <form th:method="PATCH" th:action="@{/api/cargo/{name}(name=${cargo.getNumberOfCargo()})}" th:object="${cargo}">
 
 
-    <label for="numberOfCargo">numberOfCargo</label>
+    <label for="numberOfCargo">numberOfCargo*</label>
     <input type="text" th:field="*{numberOfCargo}" id="numberOfCargo"/>
 
     <br>
 
-    <label for="nameOfCargo">nameOfCargo</label>
+    <label for="nameOfCargo">nameOfCargo*</label>
     <input type="text" th:field="*{nameOfCargo}" id="nameOfCargo"/>
 
     <br>
 
-    <label for="weight">weight</label>
+    <label for="weight">weight*</label>
     <input type="text" th:field="*{weight}" id="weight"/>
 
     <br>
 
-    <label for="statusOfCargo">statusOfCargo</label>
+    <label for="statusOfCargo">statusOfCargo*</label>
     <input type="text" th:field="*{statusOfCargo}" id="statusOfCargo"/>
 
     <br>

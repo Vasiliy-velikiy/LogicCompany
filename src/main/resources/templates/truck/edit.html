@@ -9,22 +9,22 @@
 <!--/*@thymesVar id="driver" type="com.moskalev.domain.dto.impl.truckDto.TruckDto"*/-->
 <form th:method="PATCH" th:action="@{/api/truck/{registrationNumber}(registrationNumber=${truck.getRegistrationNumber()})}" th:object="${truck}">
 
-    <label for="registrationNumber">registrationNumber</label>
+    <label for="registrationNumber">registrationNumber*</label>
     <input type="text" th:field="*{registrationNumber}" id="registrationNumber"/>
 
     <br>
 
-    <label for="changeTimeOfDriver">changeTimeOfDriver</label>
+    <label for="changeTimeOfDriver">changeTimeOfDriver*</label>
     <input type="text" th:field="*{changeTimeOfDriver}" id="changeTimeOfDriver"/>
 
     <br>
 
-    <label for="truckCapacity">truckCapacity</label>
+    <label for="truckCapacity">truckCapacity*</label>
     <input type="text" th:field="*{truckCapacity}" id="truckCapacity"/>
 
     <br>
 
-    <label for="workStatus">workStatus</label>
+    <label for="workStatus">workStatus*</label>
     <input type="text" th:field="*{workStatus}" id="workStatus"/>
 
     <br>

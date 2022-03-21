@@ -8,27 +8,27 @@
 
 <!--/*@thymesVar id="person" type="com.moskalev.domain.dto.impl.driverDto.DriverToCreateDto"*/-->
 <form th:method="POST" th:action="@{/api/driver}" th:object="${driver}">
-    <label for="name">First Name</label>
+    <label for="name">First Name*</label>
     <input type="text" name="firstName" id="name"/>
 
     <br>
 
-    <label for="lastname">Last Name</label>
+    <label for="lastname">Last Name*</label>
     <input type="text" name="lastName" id="lastname"/>
 
     <br>
 
-    <label for="personalNumber">personalNumber</label>
+    <label for="personalNumber">personalNumber*</label>
     <input type="text" name="personalNumber" id="personalNumber"/>
 
     <br>
 
-    <label for="hoursWorkedPerMonth">hoursWorkedPerMonth</label>
+    <label for="hoursWorkedPerMonth">hoursWorkedPerMonth*</label>
     <input type="text" name="hoursWorkedPerMonth" id="hoursWorkedPerMonth"/>
 
     <br>
 
-    <label for="statusOfDriver">statusOfDriver</label>
+    <label for="statusOfDriver">statusOfDriver*</label>
     <input type="text" name="statusOfDriver" id="statusOfDriver"/>
 
     <br>

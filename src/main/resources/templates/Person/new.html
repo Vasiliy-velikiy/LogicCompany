@@ -8,27 +8,27 @@
 
 <!--/*@thymesVar id="person" type="com.moskalev.domain.dto.impl.personDto.PersonToCreateDto"*/-->
 <form th:method="POST" th:action="@{/api/persons}" th:object="${person}">
-    <label for="name">First Name</label>
+    <label for="name">First Name*</label>
     <input type="text" name="firstName" id="name"/>
 
     <br>
 
-    <label for="lastname">Last Name</label>
+    <label for="lastname">Last Name*</label>
     <input type="text" name="lastName" id="lastname"/>
 
     <br>
 
-    <label for="email">Email</label>
+    <label for="email">Email*</label>
     <input type="text" name="email" id="email"/>
 
     <br>
 
-    <label for="password">Password</label>
+    <label for="password">Password*</label>
     <input type="text" name="password" id="password"/>
 
     <br>
 
-    <label for="role">Role</label>
+    <label for="role">Role*</label>
     <input type="text" name="role" id="role"/>
 
     <br>

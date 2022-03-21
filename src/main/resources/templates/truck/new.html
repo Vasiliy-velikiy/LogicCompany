@@ -9,22 +9,22 @@
 <!--/*@thymesVar id="person" type="com.moskalev.domain.dto.impl.truckDto.TruckToCreateDto"*/-->
 <form th:method="POST" th:action="@{/api/truck}" th:object="${truck}">
 
-    <label for="registrationNumber">registrationNumber</label>
+    <label for="registrationNumber">registrationNumber*</label>
         <input type="text" name="registrationNumber" id="registrationNumber"/>
 
         <br>
 
-        <label for="changeTimeOfDriver">changeTimeOfDriver</label>
+        <label for="changeTimeOfDriver">changeTimeOfDriver*</label>
         <input type="text" name="changeTimeOfDriver" id="changeTimeOfDriver"/>
 
         <br>
 
-        <label for="truckCapacity">truckCapacity</label>
+        <label for="truckCapacity">truckCapacity*</label>
         <input type="text" name="truckCapacity" id="truckCapacity"/>
 
         <br>
 
-        <label for="workStatus">workStatus</label>
+        <label for="workStatus">workStatus*</label>
         <input type="text" name="workStatus" id="workStatus"/>
 
         <br>
