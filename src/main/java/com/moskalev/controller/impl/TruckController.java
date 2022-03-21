@@ -2,6 +2,7 @@ package com.moskalev.controller.impl;
 
 
 import com.moskalev.domain.dto.impl.truckDto.TruckDto;
+import com.moskalev.domain.dto.impl.truckDto.TruckFilterDto;
 import com.moskalev.domain.dto.impl.truckDto.TruckToCreateDto;
 
 import com.moskalev.service.impl.TruckService;
@@ -66,4 +67,12 @@ public class TruckController {
         truckService.update(registrationNumber, truckDto);
         return "redirect:/api/truck";
     }
+
+    @PostMapping("/filter")
+    public String filter(Model model, @ModelAttribute TruckFilterDto truckFilterDto) {
+      model.addAttribute("trucks",truckService.filter(truckFilterDto));
+        return "truck/filterTrucks";
+    }
+
+
 }

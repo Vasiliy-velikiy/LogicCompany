@@ -6,11 +6,10 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<h1>Truck List</h1>
+<h1>Filter trucks List</h1>
 <!--<a href="addPerson">Add Person</a>-->
 <br/><br/>
 <div>
-    <h2>ALL Trucks</h2>
     <table border="1">
         <tr>
             <th>RegistrationNumber</th>
@@ -25,7 +24,7 @@
 
         </tr>
 
-        <!--/*@thymesVar id="persons" type="com.moskalev.domain.dto.impl.truckDto.TruckDto"*/-->
+        <!--/*@thymesVar id="trucks" type="com.moskalev.domain.dto.impl.truckDto.TruckDto"*/-->
         <tr th:each="truck : ${trucks}">
             <td th:utext="${truck.registrationNumber}">...</td>
             <td th:utext="${truck.changeTimeOfDriver}">...</td>
@@ -46,21 +45,7 @@
     </table>
     <br/>
     <hr/>
-    <a href="/api/truck/new">Create new truck</a>
 
-    <br/>
-    <hr/>
-    <h2>filter trucks </h2>
-    <a>which have a good status and no orders</a>
-    <!--/*@thymesVar id="truck" type="com.moskalev.domain.dto.impl.truckDto.TruckFilterDto"*/-->
-    <form th:method="POST" th:action="@{/api/truck/filter}" th:object="${truck}">
-
-        <label for="truckCapacity">required capacity</label>
-        <input type="text" name="truckCapacity" id="truckCapacity"/>
-        
-        <input type="submit" value="filter"/>
-
-    </form>
 
 
 </div>

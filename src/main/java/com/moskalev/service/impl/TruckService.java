@@ -2,6 +2,7 @@ package com.moskalev.service.impl;
 
 
 import com.moskalev.domain.dto.impl.truckDto.TruckDto;
+import com.moskalev.domain.dto.impl.truckDto.TruckFilterDto;
 import com.moskalev.domain.dto.impl.truckDto.TruckToCreateDto;
 
 import com.moskalev.domain.entity.Truck;
@@ -70,4 +71,11 @@ public class TruckService {
             throw new CustomException(String.format("Truck with number : %s not found ", number));
         }
     }
+
+    public List<TruckDto> filter(TruckFilterDto truckFilterDto) {
+        List<TruckDto> truckDtos = truckMapper.convertListToDto(truckRepository.findByTruckCapacityLessThanEqualAndAndWorkStatusAndAndOrder(truckFilterDto.getTruckCapacity(),
+                true,null));
+        return truckDtos;
+    }
+
 }
