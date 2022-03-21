@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Way Point List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Way Point List</h1>
+<!--<a href="addPerson">Add Person</a>-->
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th> Id</th>
+            <th>Current City</th>
+            <th>Current Cargo</th>
+            <th>is Loading</th>
+            <th>Current Order</th>
+            <th>EDIT</th>
+            <th>REMOVE</th>
+
+
+        </tr>
+
+        <!--/*@thymesVar id="persons" type="com.moskalev.domain.dto.impl.waypointDto.WayPointDto"*/-->
+        <tr th:each="way : ${ways}">
+            <td th:utext="${way.id}">...</td>
+            <td th:utext="${way.currentCityForWayPoint}">...</td>
+            <td th:utext="${way.currentCargoForWayPoint}">...</td>
+            <td th:utext="${way.isLoading}">...</td>
+            <td th:utext="${way.orderForWayPoint}">...</td>
+
+
+            <td><a th:href="@{/api/way/{id}/edit(id=${way.getId()})}">Edit</a></td>
+            <td>
+                <form th:method="DELETE" th:action="@{/api/way/{id}(id=${way.getId()})}">
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+
+        </tr>
+    </table>
+    <br/>
+    <hr/>
+    <a href="/api/way/new">Create new way point</a>
+
+
+</div>
+</body>
+</html>

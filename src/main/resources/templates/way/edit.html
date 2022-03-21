@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update truck </title>
+</head>
+<body>
+
+
+<!--/*@thymesVar id="cargo" type="com.moskalev.domain.dto.impl.waypointDto.WayPointDto"*/-->
+<form th:method="PATCH" th:action="@{/api/way/{id}(id=${way.getId()})}" th:object="${way}">
+
+    <label for="id">id</label>
+    <input type="text" th:field="*{id}" id="id"/>
+
+    <br>
+
+    <label for="currentCityForWayPoint">currentCityForWayPoint</label>
+    <input type="text" th:field="*{currentCityForWayPoint}" id="currentCityForWayPoint"/>
+
+    <br>
+
+    <label for="currentCargoForWayPoint">currentCargoForWayPoint</label>
+    <input type="text"th:field="*{currentCargoForWayPoint}" id="currentCargoForWayPoint"/>
+
+    <br>
+
+    <label for="isLoading">isLoading</label>
+    <input type="text" th:field="*{isLoading}" id="isLoading"/>
+
+    <br>
+
+    <label for="orderForWayPoint">orderForWayPoint</label>
+    <input type="text" th:field="*{orderForWayPoint}" id="orderForWayPoint"/>
+
+    <br>
+    <input type="submit" value="Update way point"/>
+
+</form>
+</body>
+</html>
